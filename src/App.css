@@ -1,0 +1,149 @@
+.container{
+    background-color: aliceblue;
+    width: screen;
+    height: screen;
+}
+  
+.header{
+    width: screen;
+    background-color:#EE534F;
+    display: flex;
+    justify-content:center;
+}
+  
+.btn {
+    display: inline-block;
+    color: #fff;
+    background-color: #FECA1C;
+    font-size: 1em;
+    text-align: center;
+    padding: 10px 15px;
+    border: 0;
+    margin: 10px 0;
+}
+
+.search {
+height: 100px;
+}
+
+input[type='text'] {
+    display: block;
+    padding: 10px;
+    font-size: 20px;
+    border: 0;
+    border-radius: 5px;
+    width: 60%;
+    margin: auto;
+    outline: none;
+}
+
+.cards {
+    width:screen;
+    height: screen;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.card {
+    cursor: pointer;
+    background-color: transparent;
+    height: 300px;
+    margin:1em;
+}
+
+.card h1 {
+    font-size: 25px;
+    border-bottom: 1px #FECA1C solid;
+    padding-top: 10%;
+    padding-bottom: 10px;
+    margin-bottom: 1em;
+}
+
+.card span{
+    margin-bottom: 0.5em;
+}
+
+.card b{
+    color:#FECA1C;
+}
+.card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.card-inner {
+    background-color: #ffffff;
+    border-radius: 3rem;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    box-shadow: 1px 1px 10px 10px #95a3b916;
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    border-radius: 3rem;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.card-back {
+    background-color: #345997;
+    width: 100%;
+    border-radius: 3rem;
+    color: white;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    transform: rotateY(180deg);
+    box-shadow: 1px 1px 10px 10px #95a3b916;
+}
+
+@media (max-width: 800px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+    .card img {
+        width: 100%;
+        height: 300px;
+        object-fit: contain;
+    }
+}
+
+#loading {
+    display: flex;
+    justify-content:center;align-content: center;
+    width: 100%;
+    height: 100%;
+    
+}
+#loadingImg{
+    width: 50%;
+    height: 50%;
+    animation: rotate 10s infinite  forwards ease-in-out;
+}
+@keyframes rotate {
+    0%{
+        transform: rotate(0deg);
+    }
+    0%{
+        transform: rotate(360deg);
+    }
+}
