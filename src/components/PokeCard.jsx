@@ -1,20 +1,21 @@
 import axios from 'axios';
 import React, { useState ,useEffect} from 'react'
 import Loading from './Loading';
+
+
 function PokeCard({url}) {
     const[isLoadingPoke,setIsLoadingPoke]=useState(true);
     const[data,setData]=useState();
 
+    let getData = async () =>{
+        setIsLoadingPoke(true);
+        const res =await  axios.get(url).then(res => setData(res.data));
+        setIsLoadingPoke(false);
+    } 
+
     useEffect(()=>{
-        const getData = async () =>{
-            setIsLoadingPoke(true);
-            const res =await  axios.get(url).then(res => setData(res.data));
-            setIsLoadingPoke(false);
-        } 
         getData()
     },[url])
-    
-
 
     return isLoadingPoke?((<div className="card">
         <div className="card-inner">

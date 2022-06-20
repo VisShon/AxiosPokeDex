@@ -13,7 +13,7 @@ function App() {
       const fetchPoke = async ()=>{
         setIsLoading(false);
         var res=[];
-        await axios.get('https://pokeapi.co/api/v2/pokemon?limit=1126').then(res=>setItems(res.data.results.filter(item => item.name.includes(query))));
+        await axios.get('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0').then(res=>setItems(res.data.results.filter(item => item.name.includes(query))));
         setIsLoading(false);
       }
       fetchPoke()
