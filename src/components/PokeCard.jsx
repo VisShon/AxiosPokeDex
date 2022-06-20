@@ -7,11 +7,12 @@ function PokeCard({url}) {
 
     useEffect(()=>{
         const getData = async () =>{
+            setIsLoadingPoke(true);
             const res =await  axios.get(url).then(res => setData(res.data));
             setIsLoadingPoke(false);
         } 
         getData()
-    },[])
+    },[url])
     
 
 
