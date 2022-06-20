@@ -1,16 +1,20 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useState ,useEffect} from 'react'
 import Loading from './Loading';
 function PokeCard({url}) {
     const[isLoadingPoke,setIsLoadingPoke]=useState(true);
     const[data,setData]=useState();
-    async function getData(url){
-        const res = await axios.get(url);
-        setData(res.data);
-        setIsLoadingPoke(false);
-        console.log(data);
-    }
-    getData(url);
+
+    useEffect(()=>{
+        const getData = async () =>{
+            const res =await  axios.get(url).then(res => setData(res.data));
+            setIsLoadingPoke(false);
+        } 
+        getData()
+    },[])
+    
+
+
     return isLoadingPoke?((<div className="card">
         <div className="card-inner">
             <Loading/>
@@ -18,12 +22,11 @@ function PokeCard({url}) {
     </div>)):( (
     <div className="card">
         <div className="card-inner">
-            
             <div className='card-front'>
                 <img src={data.sprites.front_default} alt='' />
             </div>
             <div className='card-back'>
-                <h1>{data.name}</h1>
+                <h1 style={{color: '#FECA1C'}}>{data.name.toUpperCase()}</h1>
                 <span><b>Species: </b>{data.species.name}</span> 
                 <span><b>Base Experience: </b>{data.base_experience}</span> 
                 <span><b>Height: </b>{data.height}</span> 
